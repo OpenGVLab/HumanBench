@@ -1,9 +1,29 @@
-# [CVPR'23] HumanBench: Towards General Human-centric Perception with Projector Assisted Pretraining
-### [Paper](https://arxiv.org/abs/2303.05675) | [Project Page](https://fastmetro.github.io/) | [Model Checkpoint](#model_checkpoint)
+<div align="center">
 
-# [CVPR'23] UniHCP: A Unified Model for Human-Centric Perceptions
-### [Paper](https://arxiv.org/abs/2303.02936) | [Project Page](https://fastmetro.github.io/) | [Model Checkpoint](#model_checkpoint)
+<h2>HumanBench: Towards Human-Centric Foundation Models</h2>
 
-- **HumanBench** is a large-scale and diverse benchmark towards understanding human-centric 2d perception tasks, including Person ReID, Pose estimation, Pedestrain Attribute Recognition, Human Parsing, Pedestrain detection and Crowd Counting.
-- **PATH** (**P**rojector **A**ssis**T**ed **H**ierarchical pretraining) is a extension of **SL-MLP**(https://arxiv.org/abs/2112.00496) to Multitask pretraining methods. It can reduce task conflicts among different tasks.
-- **UniHCP** (UniHCP: A Unified Model for Human-Centric Perceptions) is a unifed model for 5 human-centric tasks, including Person ReID, Pose estimation, Pedestrain Attribute Recognition, Human Parsing, Pedestrain detection, which shares 99.97% weights among different tasks. 
+
+</div>
+
+---
+
+
+- [**HumanBench**](PATH) (CVPR 2023) - HumanBench: Towards General Human-centric Perception with Projector Assisted Pretraining
+
+- [**UniHCP**](UniHCP) (CVPR 2023) - UniHCP: A Unified Model for Human-Centric Perceptions
+
+
+## News
+- 2023.4 Code of PATH is availabel
+- 2023.3 Code of UniHCP is available
+
+## Contact
+- **We are hiring** at all levels at Shanghai Artificial Labolotory, including full-time researchers, engineers and interns. 
+If you are interested in working with us on **human-centric foundation model and human-centric AIGC driven by foundation model**, please contact [tangshixiang](`tangshixiang2016@gmail.com`).
+
+
+
+## License
+
+The content of this project itself is licensed under [LICENSE](LICENSE).
+
