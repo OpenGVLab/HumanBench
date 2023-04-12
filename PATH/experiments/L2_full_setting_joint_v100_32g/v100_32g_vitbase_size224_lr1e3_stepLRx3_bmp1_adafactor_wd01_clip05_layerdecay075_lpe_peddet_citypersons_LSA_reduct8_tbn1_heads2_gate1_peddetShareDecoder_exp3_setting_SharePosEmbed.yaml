@@ -3,7 +3,7 @@ common:  # prefix
   project_name: L2_full_setting_joint_v100_32g
 
   #######################
-  # dataset: 
+  # dataset:
   # pose: cocopose / aic / posetrack / jrdb2022 / mhp_pose / penn_action / 3dpw / halpe / 3dhp / h36m_pose / AIST
   # human parsing: h36m / lip / cihp / vip / PaperRoll
   # clothes parsing: deepfashion / modanet
@@ -47,7 +47,7 @@ common:  # prefix
     num_layers: 12
     layer_decay_rate: 0.75
     lpe_lr: True
-    
+
   auto_denan: False
 
   workers: 2
@@ -67,8 +67,8 @@ common:  # prefix
   sync: True
 
 
-tasks :  
-## pose ## 
+tasks :
+## pose ##
   # cocopose
   0:
     name: pose_coco
@@ -91,8 +91,8 @@ tasks :
     dataset:
       type: COCOPosDatasetDev
       kwargs:
-        ann_file:  sh1424:s3://pose_public/coco/annotations/person_keypoints_train2017.json
-        img_prefix: sh1424:s3://pose_public/coco/train2017/
+        ann_file:  DATASET_PATH/pose_public/coco/annotations/person_keypoints_train2017.json
+        img_prefix: DATASET_PATH/pose_public/coco/train2017/
         use_udp: True
         data_use_ratio: 1
         data_cfg: {
@@ -116,7 +116,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -144,9 +144,9 @@ tasks :
           'flip_test': True,
           'post_process':'default',
           'shift_heatmap': False,
-          'use_udp': True, 
+          'use_udp': True,
           'modulate_kernel': 11}
-  
+
   ## aic pose
   1:
     name: pose_aic
@@ -170,8 +170,8 @@ tasks :
     dataset:
       type: MultiPoseDatasetDev
       kwargs:
-        ann_file:  sh1424:s3://pose_public/ai_challenge/annotations/aic_train.json
-        img_prefix: sh1424:s3://pose_public/ai_challenge/ai_challenger_keypoint_train_20170902/keypoint_train_images_20170902/
+        ann_file:  DATASET_PATH/pose_public/ai_challenge/annotations/aic_train.json
+        img_prefix: DATASET_PATH/pose_public/ai_challenge/ai_challenger_keypoint_train_20170902/keypoint_train_images_20170902/
         dataset_name: 'aic'
         use_udp: True
         data_use_ratio: 1
@@ -182,7 +182,7 @@ tasks :
                       'num_joints': 14,
                       'dataset_channel': [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],],
                       'inference_channel': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-                      
+
                       'flip_pairs': [[0, 3], [1, 4], [2, 5], [6, 9], [7, 10], [8, 11],],
                       'upper_body_ids': [0, 1, 2, 3, 4, 5, 12, 13],
                       'lower_body_ids': [6, 7, 8, 9, 10, 11],
@@ -203,7 +203,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -239,7 +239,7 @@ tasks :
   2:
     name: pose_posetrack
     loss_weight: 1344000
-    gres_ratio: 1 
+    gres_ratio: 1
 
     backbone:
       type: vit_base_patch16_ladder_attention_share_pos_embed
@@ -257,9 +257,9 @@ tasks :
 
     dataset:
       type: MultiPoseDatasetDev
-      kwargs: 
-        ann_file: openmmlab:s3://openmmlab/datasets/pose/PoseChallenge2018/annotations/posetrack18_train.json
-        img_prefix: openmmlab:s3://openmmlab/datasets/pose/PoseChallenge2018/
+      kwargs:
+        ann_file: DATASET_PATH/pose_public/PoseChallenge2018/annotations/posetrack18_train.json
+        img_prefix: DATASET_PATH/pose_public/PoseChallenge2018/
         data_use_ratio: 1
         use_udp: True
         dataset_name: 'posetrack'
@@ -270,7 +270,7 @@ tasks :
                       'num_joints': 15,
                       'dataset_channel': [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],],
                       'inference_channel': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-                      
+
                       'flip_pairs': [[3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], ],
                       'upper_body_ids': [0, 1, 2, 3, 4, 5, 6, 7, 8,],
                       'lower_body_ids': [9, 10, 11, 12, 13, 14],
@@ -292,7 +292,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -345,9 +345,9 @@ tasks :
 
     dataset:
       type: MultiPoseDatasetDev
-      kwargs: 
-        img_prefix: sh1424:s3://pose_public/JRDB2022/images/
-        ann_file: sh1424:s3://pose_public/JRDB2022/train.json
+      kwargs:
+        img_prefix: DATASET_PATH/pose_public/JRDB2022/images/
+        ann_file: DATASET_PATH/pose_public/JRDB2022/train.json
         data_use_ratio: 1
         use_udp: True
         dataset_name: 'JRDB2022'
@@ -379,7 +379,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -432,9 +432,9 @@ tasks :
 
     dataset:
       type: MultiPoseDatasetDev
-      kwargs: 
-        img_prefix: openmmlab:s3://openmmlab/datasets/pose/LV-MHP-v2/train/images
-        ann_file: sh1424:s3://pose_public/pose_MHPv2/train.json
+      kwargs:
+        img_prefix: DATASET_PATH/pose_public/LV-MHP-v2/train/images
+        ann_file: DATASET_PATH/pose_public/pose_MHPv2/train.json
         data_use_ratio: 1
         use_udp: True
         dataset_name: 'mhp'
@@ -445,7 +445,7 @@ tasks :
                       'num_joints': 16,
                       'dataset_channel': [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,],],
                       'inference_channel': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,],
-                      
+
                       'flip_pairs': [[0, 5], [1, 4], [2, 3], [10, 15], [11, 14], [12, 13], ],
                       'upper_body_ids': [7, 8, 9, 10, 11, 12, 13, 14, 15],
                       'lower_body_ids': [0, 1, 2, 3, 4, 5, 6],
@@ -467,7 +467,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -497,7 +497,7 @@ tasks :
           'shift_heatmap': False,
           'use_udp': True,
           'modulate_kernel': 11}
-  
+
   5:
     name: pose_upenn_action
     loss_weight: 512000
@@ -519,9 +519,9 @@ tasks :
 
     dataset:
       type: MultiPoseDatasetDev
-      kwargs: 
-        img_prefix: openmmlab:s3://openmmlab/datasets/pose/PENN/Penn_Action/frames
-        ann_file: sh1424:s3://pose_public/pose_penn_action/train.json
+      kwargs:
+        img_prefix: DATASET_PATH/pose_public/PENN/Penn_Action/frames
+        ann_file: DATASET_PATH/pose_public/pose_penn_action/train.json
         use_udp: True
         data_use_ratio: 1
         dataset_name: 'penn_action'
@@ -532,7 +532,7 @@ tasks :
                       'num_joints': 13,
                       'dataset_channel': [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,],],
                       'inference_channel': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,],
-                      
+
                       'flip_pairs': [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], ],
                       'upper_body_ids': [0, 1, 2, 3, 4, 5, 6, 7, 8],
                       'lower_body_ids': [9, 10, 11, 12],
@@ -554,7 +554,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -606,9 +606,9 @@ tasks :
 
     dataset:
       type: MultiPoseDatasetDev
-      kwargs: 
-        img_prefix: sh1424:s3://pose_public/3DPW/imageFiles/
-        ann_file: sh1424:s3://pose_public/3DPW/dataset_merged.json
+      kwargs:
+        img_prefix: DATASET_PATH/pose_public/3DPW/imageFiles/
+        ann_file: DATASET_PATH/pose_public/3DPW/dataset_merged.json
         use_udp: True
         data_use_ratio: 1
         dataset_name: '3DPW'
@@ -640,7 +640,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -693,8 +693,8 @@ tasks :
     dataset:
       type: MultiPoseDatasetDev
       kwargs:
-        ann_file:  sh1424:s3://pose_public/Halpe/train.json
-        img_prefix: openmmlab:s3://openmmlab/datasets/pose/Halpe/hico_20160224_det/images/train2015/
+        ann_file:  DATASET_PATH/pose_public/Halpe/train.json
+        img_prefix: DATASET_PATH/pose_public/Halpe/hico_20160224_det/images/train2015/
         data_use_ratio: 1
         use_udp: True
         dataset_name: 'halpe'
@@ -726,7 +726,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -779,8 +779,8 @@ tasks :
     dataset:
       type: MultiPoseDatasetDev
       kwargs:
-        ann_file:  sh1424:s3://pose_public/3dhp/train.json
-        img_prefix: openmmlab:s3://openmmlab/datasets/pose/mpi_inf_3dhp/processed/images/
+        ann_file:  DATASET_PATH/pose_public/3dhp/train.json
+        img_prefix: DATASET_PATH/pose_public/mpi_inf_3dhp/processed/images/
         data_use_ratio: 1
         use_udp: True
         dataset_name: '3DHP'
@@ -812,7 +812,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -865,8 +865,8 @@ tasks :
     dataset:
       type: MultiPoseDatasetDev
       kwargs:
-        ann_file:  openmmlab:s3://openmmlab/datasets/pose/h36m/processed/annotation_body2d/h36m_coco_train.json
-        img_prefix: openmmlab:s3://openmmlab/datasets/pose/h36m/processed/images/
+        ann_file:  DATASET_PATH/pose_public/h36m/processed/annotation_body2d/h36m_coco_train.json
+        img_prefix: DATASET_PATH/pose_public/h36m/processed/images/
         use_udp: True
         data_use_ratio: 1
         dataset_name: 'h36m'
@@ -898,7 +898,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -928,7 +928,7 @@ tasks :
           'shift_heatmap': False,
           'use_udp': True,
           'modulate_kernel': 11}
-  
+
   10:
     name: pose_AIST
     loss_weight: 256000
@@ -951,8 +951,8 @@ tasks :
     dataset:
       type: MultiPoseDatasetDev
       kwargs:
-        ann_file: sh1424:s3://pose_public/aistplusplus/train.json
-        img_prefix: sh1424:s3://pose_public/aistplusplus/images/
+        ann_file: DATASET_PATH/pose_public/aistplusplus/train.json
+        img_prefix: DATASET_PATH/pose_public/aistplusplus/images/
         use_udp: True
         dataset_name: 'AIST'
         data_cfg: {
@@ -983,7 +983,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1014,7 +1014,7 @@ tasks :
           'use_udp': True,
           'modulate_kernel': 11}
 
-## human parsing ## 
+## human parsing ##
   # human3.6m
   11:
     name: parsing_h36m
@@ -1033,11 +1033,11 @@ tasks :
         round_padding: True
         learnable_pos: True
         drop_path_rate: 0.3
-    
+
     dataset:
       type: Human3M6ParsingDataset
       kwargs:
-        data_path: sh1424:s3://parsing_public/human3.6 # files in core/data/datasets/images/resources/* or absolute path
+        data_path: DATASET_PATH/parsing_public/human3.6 # files in core/data/datasets/images/resources/* or absolute path
         data_use_ratio: 1
         cfg:
           is_flip: True
@@ -1054,10 +1054,10 @@ tasks :
     sampler:
       batch_size: 26
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1081,7 +1081,7 @@ tasks :
             configer:
               ce_reduction: elementwise_mean
               ce_ignore_index: 255
-  
+
   # lip
   12:
     name: parsing_lip
@@ -1100,11 +1100,11 @@ tasks :
         round_padding: True
         learnable_pos: True
         drop_path_rate: 0.3
-    
+
     dataset:
       type: LIPParsingDataset
       kwargs:
-        data_path: sh1424:s3://parsing_public/LIP # files in core/data/datasets/images/resources/* or absolute path
+        data_path: DATASET_PATH/parsing_public/LIP # files in core/data/datasets/images/resources/* or absolute path
         data_use_ratio: 1
         cfg:
           is_flip: True
@@ -1121,10 +1121,10 @@ tasks :
     sampler:
       batch_size: 18  # per card
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1167,11 +1167,11 @@ tasks :
         round_padding: True
         learnable_pos: True
         drop_path_rate: 0.3
-    
+
     dataset:
       type: CIHPParsingDataset
       kwargs:
-        data_path: sh1424:s3://parsing_public/CIHP # files in core/data/datasets/images/resources/* or absolute path
+        data_path: DATASET_PATH/parsing_public/CIHP # files in core/data/datasets/images/resources/* or absolute path
         data_use_ratio: 1
         cfg:
           is_flip: True
@@ -1188,10 +1188,10 @@ tasks :
     sampler:
       batch_size: 24
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1238,7 +1238,7 @@ tasks :
     dataset:
       type: VIPParsingDataset
       kwargs:
-        data_path: sh1424:s3://parsing_public/VIP/
+        data_path: DATASET_PATH/parsing_public/VIP/
         data_use_ratio: 1
         cfg:
           is_flip: True
@@ -1255,10 +1255,10 @@ tasks :
     sampler:
       batch_size: 16
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1296,8 +1296,8 @@ tasks :
         img_size: [224, 224]  # deprecated by simple interpolate
         lms_checkpoint_train: fairscale
         window: False
-        test_pos_mode: learnable_simple_interpolate 
-        pad_attn_mask: False  
+        test_pos_mode: learnable_simple_interpolate
+        pad_attn_mask: False
         round_padding: True
         learnable_pos: True
         drop_path_rate: 0.3
@@ -1305,7 +1305,7 @@ tasks :
     dataset:
       type: PaperDollParsingDataset
       kwargs:
-        data_path: sh1424:s3://parsing_public/PaperDoll/
+        data_path: DATASET_PATH/parsing_public/PaperDoll/
         cfg:
           is_flip: True
           crop_size: [480, 480]
@@ -1321,10 +1321,10 @@ tasks :
     sampler:
       batch_size: 24
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1349,7 +1349,7 @@ tasks :
               ce_reduction: elementwise_mean
               ce_ignore_index: 255
 
-## clothes parsing ## 
+## clothes parsing ##
   # deepfashion
   16:
     name: parsing_deepfashion
@@ -1368,11 +1368,11 @@ tasks :
         round_padding: True
         learnable_pos: True
         drop_path_rate: 0.3
-    
+
     dataset:
       type: DeepFashionParsingDataset
       kwargs:
-        data_path: sh1424:s3://parsing_public/deepfashion2/   # /mnt/lustrenew/share_data/chencheng1/data/deepfasion
+        data_path: DATASET_PATH/parsing_public/deepfashion2/   # /mnt/lustrenew/share_data/chencheng1/data/deepfasion
         data_use_ratio: 1
         cfg:
           is_flip: False
@@ -1387,12 +1387,12 @@ tasks :
           label_list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
     sampler:
-      batch_size: 32 
+      batch_size: 32
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1439,7 +1439,7 @@ tasks :
     dataset:
       type: ModaNetParsingDataset
       kwargs:
-        data_path: sh1424:s3://parsing_public/ModaNet/
+        data_path: DATASET_PATH/parsing_public/ModaNet/
         data_use_ratio: 1
         cfg:
           is_flip: False
@@ -1456,10 +1456,10 @@ tasks :
     sampler:
       batch_size: 32
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1484,7 +1484,7 @@ tasks :
               ce_reduction: elementwise_mean
               ce_ignore_index: 255
 
-## attribute ## 
+## attribute ##
   # rap2
   18:
     name: attr_rap2_pa100k
@@ -1503,21 +1503,21 @@ tasks :
         round_padding: True
         learnable_pos: True
         drop_path_rate: 0.1
-    
+
     dataset:
       type: MultiAttrDataset
       kwargs:
         data_use_ratio: 1
         task_spec:
-          dataset: 
+          dataset:
             - rap2
             - PA-100k
           data_path:
-            - sh1424:s3://pedattr_public/rap2/dataset.pkl
-            - sh1424:s3://pedattr_public/PA-100k/dataset.pkl
+            - DATASET_PATH/pedattr_public/rap2/dataset.pkl
+            - DATASET_PATH/pedattr_public/PA-100k/dataset.pkl
           root_path:
-            - sh1424:s3://pedattr_public/rap2/RAP_dataset/
-            - sh1424:s3://pedattr_public/PA-100k/data/
+            - DATASET_PATH/pedattr_public/rap2/RAP_dataset/
+            - DATASET_PATH/pedattr_public/PA-100k/data/
         augmentation:
           height: 256
           width: 192
@@ -1526,10 +1526,10 @@ tasks :
     sampler:
       batch_size: 128
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1558,7 +1558,7 @@ tasks :
                             0.13645261, 0.77788735, 0.07419455, 0.93875749, 0.05350073,
                             0.03379303, 0.02666941, 0.04840822, 0.02328422, 0.01050881,
                             0.01789736, 0.0254478 , 0.13287609, 0.01022916,
-                            
+
                             0.04354444,0.17997778,0.5834,0.4166,0.04947778,0.15104444,
                             0.10775556,0.04191111,0.00472222,0.01688889, 0.03241111,
                             0.71171111,0.17344444,0.11484444, 0.006,
@@ -1566,7 +1566,7 @@ tasks :
                             0.92437778, 0.06216667, 0.46044444, 0.35266667, 0.29462222,
                             0.35271111]
             size_average: True
-  
+
   # 5set_attr
   19:
     name: attr_5set
@@ -1585,30 +1585,30 @@ tasks :
         round_padding: True
         learnable_pos: True
         drop_path_rate: 0.1
-    
+
     dataset:
       type: MultiAttrDataset
       kwargs:
         data_use_ratio: 1
         task_spec:
-          dataset: 
-            - HARDHC 
+          dataset:
+            - HARDHC
             - uavhuman
             - parse27k
             - duke
             - market
-          data_path: 
-            - sh1424:s3://pedattr_public/HARDHC/dataset.pkl
-            - sh1424:s3://pedattr_public/UVA-Human/AttributeRecognition/uavhuman/dataset.pkl
-            - sh1424:s3://pedattr_public/Parse27k/parse27k/parse27k/dataset.pkl
-            - sh1424:s3://pedattr_public/DukeMTMC-reID/DukeMTMC-reID/dataset.pkl
-            - sh1424:s3://pedattr_public/market/dataset.pkl
-          root_path: 
-            - sh1424:s3://pedattr_public/HARDHC/croped_image/
-            - sh1424:s3://pedattr_public/UVA-Human/AttributeRecognition/uavhuman/train
-            - sh1424:s3://pedattr_public/Parse27k/parse27k/parse27k/images
-            - sh1424:s3://pedattr_public/DukeMTMC-reID/DukeMTMC-reID
-            - sh1424:s3://pedattr_public/market/bounding_box_train
+          data_path:
+            - DATASET_PATH/pedattr_public/HARDHC/dataset.pkl
+            - DATASET_PATH/pedattr_public/UVA-Human/AttributeRecognition/uavhuman/dataset.pkl
+            - DATASET_PATH/pedattr_public/Parse27k/parse27k/parse27k/dataset.pkl
+            - DATASET_PATH/pedattr_public/DukeMTMC-reID/DukeMTMC-reID/dataset.pkl
+            - DATASET_PATH/pedattr_public/market/dataset.pkl
+          root_path:
+            - DATASET_PATH/pedattr_public/HARDHC/croped_image/
+            - DATASET_PATH/pedattr_public/UVA-Human/AttributeRecognition/uavhuman/train
+            - DATASET_PATH/pedattr_public/Parse27k/parse27k/parse27k/images
+            - DATASET_PATH/pedattr_public/DukeMTMC-reID/DukeMTMC-reID
+            - DATASET_PATH/pedattr_public/market/bounding_box_train
         augmentation:
           height: 256
           width: 192
@@ -1617,10 +1617,10 @@ tasks :
     sampler:
       batch_size: 116
       shuffle_strategy: 1
-    
+
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1641,7 +1641,7 @@ tasks :
             sample_weight: [0.56694664, 0.22444946, 0.0502188 , 0.22603755, 0.21919113,
                             0.46474449, 0.06994636, 0.15422078, 0.08162761, 0.36204828,
                             0.10057877, 0.0329616 , 0.26824534, 0.05424195,
-                            
+
                             0.86300439, 0.12964222, 0.014645  , 0.08694309, 0.1215473 ,
                             0.64722239, 0.13779892, 0.15837607, 0.12914787, 0.13860224,
                             0.43607489, 0.04529444, 0.27090156, 0.07260706, 0.04702466,
@@ -1674,13 +1674,13 @@ tasks :
                             0.11131725, 0.03849722, 0.12128942, 0.30248918, 0.04955164,
                             0.85459184, 0.61897032, 0.95029375, 0.32189239, 0.02264997,
                             0.41573902, 0.01646568, 0.78084416, 0.18831169, 0.01437848
-                            
+
                             ]
             size_average: True
 
 ## reid ##
   # 4set
-  20: 
+  20:
     name: reid_4sets
     loss_weight: 560
     gres_ratio: 1  # int, > 0, = Task_GPUs / (world_Size/sum(all_gres_ratios))
@@ -1705,23 +1705,23 @@ tasks :
         data_use_ratio: 1
         task_spec:
           list :
-            - sh1424:s3://pedreid_public/market1501/data_list/fileList.txt
-            - sh1424:s3://pedreid_public/dukemtmc-reid/data_list/fileList.txt
-            - sh1424:s3://pedreid_public/cuhk03_1/data_list/fileList.txt
-            - sh1424:s3://pedreid_public/MSMT17_V1/data_list/fileList.txt
-            # - sh1424:s3://pedreid_public/Mars/Mars.fileList.txt
+            - DATASET_PATH/pedreid_public/market1501/data_list/fileList.txt
+            - DATASET_PATH/pedreid_public/dukemtmc-reid/data_list/fileList.txt
+            - DATASET_PATH/pedreid_public/cuhk03_1/data_list/fileList.txt
+            - DATASET_PATH/pedreid_public/MSMT17_V1/data_list/fileList.txt
+            # - DATASET_PATH/pedreid_public/Mars/Mars.fileList.txt
           meta :
-            - sh1424:s3://pedreid_public/market1501/data_list/metaList.txt
-            - sh1424:s3://pedreid_public/dukemtmc-reid/data_list/metaList.txt
-            - sh1424:s3://pedreid_public/cuhk03_1/data_list/metaList.txt
-            - sh1424:s3://pedreid_public/MSMT17_V1/data_list/metaList.txt
-            # - sh1424:s3://pedreid_public/Mars/Mars.metaList.txt
+            - DATASET_PATH/pedreid_public/market1501/data_list/metaList.txt
+            - DATASET_PATH/pedreid_public/dukemtmc-reid/data_list/metaList.txt
+            - DATASET_PATH/pedreid_public/cuhk03_1/data_list/metaList.txt
+            - DATASET_PATH/pedreid_public/MSMT17_V1/data_list/metaList.txt
+            # - DATASET_PATH/pedreid_public/Mars/Mars.metaList.txt
           prefix :
-            - sh1424:s3://pedreid_public/
-            - sh1424:s3://pedreid_public/
-            - sh1424:s3://pedreid_public/
-            - sh1424:s3://pedreid_public/
-            # - sh1424:s3://pedreid_public/
+            - DATASET_PATH/pedreid_public/
+            - DATASET_PATH/pedreid_public/
+            - DATASET_PATH/pedreid_public/
+            - DATASET_PATH/pedreid_public/
+            # - DATASET_PATH/pedreid_public/
 
         augmentation:
           height: 256
@@ -1743,7 +1743,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1773,7 +1773,7 @@ tasks :
             balance_weight: 1
 
   # LaST_PRCC_DGMarket
-  21: 
+  21:
     name: reid_LaST_PRCC_DGMarket
     loss_weight: 9.6
     gres_ratio: 1  # int, > 0, = Task_GPUs / (world_Size/sum(all_gres_ratios))
@@ -1798,17 +1798,17 @@ tasks :
         data_use_ratio: 1
         task_spec:
           list :
-            - sh1424:s3://pedreid_public/DGMarket/DG-Market-fileLists.txt
-            - sh1424:s3://pedreid_public/PRCC/rgb/PRCC-train-fileLists.txt
-            - sh1424:s3://pedreid_public/LaST/LaST-fileLists.txt
+            - DATASET_PATH/pedreid_public/DGMarket/DG-Market-fileLists.txt
+            - DATASET_PATH/pedreid_public/PRCC/rgb/PRCC-train-fileLists.txt
+            - DATASET_PATH/pedreid_public/LaST/LaST-fileLists.txt
           meta :
-            - sh1424:s3://pedreid_public/DGMarket/DG-Market-metaLists.txt
-            - sh1424:s3://pedreid_public/PRCC/rgb/PRCC-train-metaLists.txt
-            - sh1424:s3://pedreid_public/LaST/LaST-metaLists.txt
+            - DATASET_PATH/pedreid_public/DGMarket/DG-Market-metaLists.txt
+            - DATASET_PATH/pedreid_public/PRCC/rgb/PRCC-train-metaLists.txt
+            - DATASET_PATH/pedreid_public/LaST/LaST-metaLists.txt
           prefix :
-            - sh1424:s3://pedreid_public/DGMarket/data/
-            - sh1424:s3://pedreid_public/PRCC/rgb/
-            - sh1424:s3://pedreid_public/LaST/
+            - DATASET_PATH/pedreid_public/DGMarket/data/
+            - DATASET_PATH/pedreid_public/PRCC/rgb/
+            - DATASET_PATH/pedreid_public/LaST/
         augmentation:
           height: 256
           width : 128
@@ -1829,7 +1829,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1854,12 +1854,12 @@ tasks :
           type: Softmax_TripletLoss
           kwargs:
             in_features: 768
-            out_features: 5901 # 751+5150 
+            out_features: 5901 # 751+5150
             tri_margin: ~
             balance_weight: 1
 
   # LUPerson
-  22: 
+  22:
     name: reid_LUPerson
     loss_weight: 384
     gres_ratio: 2
@@ -1884,11 +1884,11 @@ tasks :
         data_use_ratio: 1
         task_spec:
           list :
-            - sh1424:s3://pedreid_public/LUP_NL/LUPerson_feat_imgnum_5178420_classnum_151595.processed_fileLists
+            - DATASET_PATH/pedreid_public/LUP_NL/LUPerson_feat_imgnum_5178420_classnum_151595.processed_fileLists
           meta :
-            - sh1424:s3://pedreid_public/LUP_NL/LUPerson_feat_imgnum_5178420_classnum_151595.processed_labels
+            - DATASET_PATH/pedreid_public/LUP_NL/LUPerson_feat_imgnum_5178420_classnum_151595.processed_labels
           prefix :
-            - sh1424:s3://pedreid_public/LUP_NL/
+            - DATASET_PATH/pedreid_public/LUP_NL/
         augmentation:
           height: 256
           width : 128
@@ -1909,7 +1909,7 @@ tasks :
 
     neck:
       type: LadderSideAttentionFPN
-      kwargs: 
+      kwargs:
         lms_checkpoint_train: fairscale
         layer_feat_nums: 12
         hidden_dim: 768
@@ -1965,10 +1965,10 @@ tasks :
         data_use_ratio: 1
         nested: True
         task_spec:
-          img_folder: 
-            - sh1424:s3://peddet_public/CrowdHuman/Images
-          ann_file: 
-            - sh1424:s3://peddet_public/CrowdHuman/annotations/train.json
+          img_folder:
+            - DATASET_PATH/peddet_public/CrowdHuman/Images
+          ann_file:
+            - DATASET_PATH/peddet_public/CrowdHuman/annotations/train.json
           return_masks: False
         augmentation: {'max_size': 1333}
         vit: True
@@ -2047,18 +2047,18 @@ tasks :
         data_use_ratio: 1
         nested: True
         task_spec:
-          img_folder: 
-            - sh1424:s3://peddet_public/WiderPerson/Images/
-            - openmmlab:s3://openmmlab/datasets/detection/coco/train2017/
-            - sh1424:s3://peddet_public/ECP/
-            - sh1424:s3://peddet_public/CityPersons/
-            - sh1424:s3://peddet_public/WIDER_Pedestrian/Images/
+          img_folder:
+            - DATASET_PATH/pose_public/WiderPerson/Images/
+            - DATASET_PATH/pose_public/coco/train2017/
+            - DATASET_PATH/peddet_public/ECP/
+            - DATASET_PATH/peddet_public/CityPersons/
+            - DATASET_PATH/peddet_public/WIDER_Pedestrian/Images/
           ann_file: 
-            - sh1424:s3://peddet_public/WiderPerson/WiderPerson_remove_no_person_img.json
-            - sh1424:s3://peddet_public/cocopersons/coco_person_remove_no_person_img.json
-            - sh1424:s3://peddet_public/ECP/day/ECP_remove_no_person_img.json
-            - sh1424:s3://peddet_public/CityPersons/CityPersons_remove_no_person_img.json
-            - sh1424:s3://peddet_public/WIDER_Pedestrian/WIDER_Pedestrian_remove_no_person_img.json
+            - DATASET_PATH/peddet_public/WiderPerson/WiderPerson_remove_no_person_img.json
+            - DATASET_PATH/peddet_public/cocopersons/coco_person_remove_no_person_img.json
+            - DATASET_PATH/peddet_public/ECP/day/ECP_remove_no_person_img.json
+            - DATASET_PATH/peddet_public/CityPersons/CityPersons_remove_no_person_img.json
+            - DATASET_PATH/peddet_public/WIDER_Pedestrian/WIDER_Pedestrian_remove_no_person_img.json
           return_masks: False
         augmentation: {'max_size': 1333}
         vit: True
