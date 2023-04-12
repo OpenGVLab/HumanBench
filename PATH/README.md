@@ -26,7 +26,7 @@ Human-centric perceptions include a variety of vision tasks, which have widespre
 
 ### $\text{\color{#2F6EBA}{A\ Large-scale\ and\ Diverse\ Human-Centric\ Benchmark}}$ 
 
-- collected 11,019,187 pretraining images from 39 datasets among 5 tasks from global to local tasks.
+- collected 11,019,187 pretraining images from 37 datasets among 5 tasks from global to local tasks.
 - constructed 19 evaluation datasets from 6 tasks.
 - 3 evaluation protocols to assess the generalization ability of pretrained models: in-datasets evaluation, out-of-datasets evaluation, unseen-tasks evaluation.
 
