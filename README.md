@@ -16,8 +16,8 @@
 
 
 ## News
-- 2023.4 Code of PATH is availabel
-- 2023.3 Code of UniHCP is available
+- 2023.4 Code of PATH is available.
+- 2023.3 Code of UniHCP is available.
 
 ## Contact
 - **We are hiring** at all levels at Shanghai Artificial Labolotory, including full-time researchers, engineers and interns. 
