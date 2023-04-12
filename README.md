@@ -7,6 +7,8 @@
 
 ---
 
+<image src="asset/cover.png" width="1280px" />
+
 
 - [**HumanBench**](PATH) (CVPR 2023) - HumanBench: Towards General Human-centric Perception with Projector Assisted Pretraining
 
