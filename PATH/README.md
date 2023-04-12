@@ -46,13 +46,10 @@ See [installation instructions](asset/INSTALL.md).
 ## Data
 See [data instructions](asset/DATA.md). 
 
-We also provide [a toy training dataset](https://huggingface.co/BAAI/Painter/blob/main/toy_datasets.tar), with 10 samples from each required datasets. You can put it in `$Painter_ROOT/toy_datasets` and set `DATA_PATH=toy_datasets` in `$Painter_ROOT/train_painter_vit_large.sh` for toy experiments.
+We also provide a small training config, with 10% samples of the whole pretraining dataset. 
 
 ## Training
 Download pre-trained MAE ViT-Large model from [here](https://dl.fbaipublicfiles.com/mae/pretrain/mae_pretrain_vit_large.pth) and update `path/to/mae_pretrain_vit_large.pth` in `$Painter_ROOT/train_painter_vit_large.sh`. 
-
-We use 8 nodes (<code>total_bsz = 8x8x32 = 2048</code>) for training:
-
 
 
 ```bash
