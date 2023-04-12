@@ -3,7 +3,7 @@
 
 Shixiang Tang<sup>1,4*</sup>, Cheng Chen<sup>4*</sup>, Qingsong Xie<sup>4</sup>, Meilin Chen<sup>2,4</sup>, Yizhou Wang<sup>2,4</sup>, Yuanzheng Ci<sup>1</sup>, Lei Bai<sup>3</sup>, Feng Zhu<sup>4</sup>, Haiyang Yang<sup>4</sup>, Li Yi<sup>4</sup>, Rui Zhao<sup>4,5</sup>, Wanli Ouyang<sup>3</sup>
 
-<sup>1</sup>The University of Sydney; <sup>2</sup>Zhejiang University; <sup>3</sup>Shanghai Artifical Laboratory; <sup>4</sup>SenseTime Research; <sup>5</sup>Qing Yuan Research Institute, Shanghai Jiao Tong University; 
+<sup>1</sup>The University of Sydney; <sup>2</sup>Zhejiang University; <sup>3</sup>Shanghai Artifical Laboratory; <sup>4</sup>SenseTime Research; <sup>5</sup>Qing Yuan Research Institute, Shanghai Jiao Tong University
 
 CVPR 2023
 
