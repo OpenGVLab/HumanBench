@@ -220,3 +220,5 @@ pose_public/
       images/
       train.json
 ```
+
+Detailed and Convienient Datasets Download Methods are under construction. 
