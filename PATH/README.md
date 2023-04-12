@@ -40,8 +40,10 @@ Human-centric perceptions include a variety of vision tasks, which have widespre
 - Even the Tasks do NOT Exist in the Training Data.
 
 
-<image src="asset/performance.jpg" width="1280px" />
-
+## Demo
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LRHpI5-kEp0" target="_blank">
+ <img src="http://img.youtube.com/vi/LRHpI5-kEp0/mqdefault.jpg" alt="Watch the video" width="1280px" border="10" />
+</a>
 
 ## Installation
 See [installation instructions](asset/INSTALL.md).
@@ -68,8 +70,9 @@ sh train.sh
 ## Evaluation
 See [evaluation instructions](docs/EVAL.md). 
 
-A pre-trained Painter is available at [🤗 google drive](https://huggingface.co/BAAI/Painter/blob/main/painter_vit_large.pth). The results on various tasks are summarized below:
+A pre-trained PATH-ViT-B is available at [🤗 hugging face](https://huggingface.co/OpenGVLab/PATH-ViTB/blob/main/v100_32g_vitbase_size224_lr1e3_stepLRx3_bmp1_adafactor_wd01_clip05_layerdecay075_lpe_peddet_citypersons_LSA_reduct8_tbn1_heads2_gate1_peddetShareDecoder_exp3_setting_SharePosEmbed.pth) and A pre-trained PATH-ViT-L is availabel at [🤗 hugging face](https://huggingface.co/OpenGVLab/vitlarge_size224_lr5e4_stepLRx3_bmp1_adafactor_clip05_wd01_layerdecay08_lpe_LSA_reduct8_tbn1_heads2_gate1_peddetDPR02_peddetShareDecoder_exp3_setting_SharePosEmbed.pth). The results on various tasks are summarized below:
 
+<image src="asset/performance.jpg" width="1280px" />
 
 ## Project Release
 - [ ] Hugging Face Release
