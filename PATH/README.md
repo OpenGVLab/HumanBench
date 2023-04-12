@@ -62,7 +62,12 @@ See [evaluation instructions](docs/EVAL.md).
 A pre-trained Painter is available at [🤗 google drive](https://huggingface.co/BAAI/Painter/blob/main/painter_vit_large.pth). The results on various tasks are summarized below:
 
 
-
+## Project Release
+- [ ] Hugging Face Release
+- [ ] Detailed and Convinent Methods for Data Preparation.
+- [x] PATH-B finetune configs
+- [x] PATH-B/L HumanBench pretrained models
+- [x] PATH Pretraining Code
 
 ## Citation
 
