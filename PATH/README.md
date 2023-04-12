@@ -40,6 +40,9 @@ Human-centric perceptions include a variety of vision tasks, which have widespre
 - Even the Tasks do NOT Exist in the Training Data.
 
 
+<image src="asset/performance.jpg" width="1280px" />
+
+
 ## Installation
 See [installation instructions](asset/INSTALL.md).
 
