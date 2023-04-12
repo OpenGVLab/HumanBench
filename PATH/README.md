@@ -42,6 +42,10 @@ Human-centric perceptions include a variety of vision tasks, which have widespre
 
 <image src="asset/performance.jpg" width="1280px" />
 
+## Demo
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LRHpI5-kEp0" target="_blank">
+ <img src="http://img.youtube.com/vi/LRHpI5-kEp0/mqdefault.jpg" alt="Watch the video" width="1280px" border="10" />
+</a>
 
 ## Installation
 See [installation instructions](asset/INSTALL.md).
