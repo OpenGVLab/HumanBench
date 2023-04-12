@@ -52,11 +52,17 @@ See [data instructions](asset/DATA.md).
 We also provide a small training config, with 10% samples of the whole pretraining dataset. 
 
 ## Training
-Download pre-trained MAE ViT-Large model from [here](https://dl.fbaipublicfiles.com/mae/pretrain/mae_pretrain_vit_large.pth) and update `path/to/mae_pretrain_vit_large.pth` in `$Painter_ROOT/train_painter_vit_large.sh`. 
+Download pre-trained MAE ViT-Large model from [here](https://dl.fbaipublicfiles.com/mae/pretrain/mae_pretrain_vit_large.pth) and place the MAE pretrained weight mae_pretrain_vit_base.pth under core/models/backbones/pretrain_weights folder. 
 
 
 ```bash
-bash train_painter_vit_large.sh
+## train ViT-B
+cd experiments/L2_full_setting_joint_v100_32g
+sh train.sh
+
+## train ViT-L
+cd experiments/L2_full_setting_vit_large_a100_80g
+sh train.sh
 ```
 
 ## Evaluation
