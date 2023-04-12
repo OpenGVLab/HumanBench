@@ -10,7 +10,7 @@
 
 - [**HumanBench**](PATH) (CVPR 2023) - HumanBench: Towards General Human-centric Perception with Projector Assisted Pretraining
 
-- [**UniHCP**](UniHCP) (CVPR 2023) - UniHCP: A Unified Model for Human-Centric Perceptions
+- [**UniHCP**](https://github.com/OpenGVLab/UniHCP/tree/cf8d7c300fc7ef3f7c005132ccb0fa19b43295e0) (CVPR 2023) - UniHCP: A Unified Model for Human-Centric Perceptions
 
 
 ## News
