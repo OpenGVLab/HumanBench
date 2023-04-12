@@ -10,7 +10,7 @@ CVPR 2023
 
 <br>
   
-<image src="docs/teaser.jpg" width="720px" />
+<image src="asset/teaser.png" width="1280px" />
 <br>
 
 </div>
@@ -24,26 +24,27 @@ Human-centric perceptions include a variety of vision tasks, which have widespre
 
 ## Hightlights
 
-### $\color{#2F6EBA}{Images\ Speak\ in\ Images}$ 
+### $\text{\color{#2F6EBA}{A\ Large-scale\ and\ Diverse\ Human-Centric\ Benchmark}}$ 
 
-- image as the general-purpose interface
-- redefine the output spaces of vision tasks as images
+- collected 11,019,187 pretraining images from 39 datasets among 5 tasks from global to local tasks.
+- constructed 19 evaluation datasets from 6 tasks.
+- 3 evaluation protocols to assess the generalization ability of pretrained models: in-datasets evaluation, out-of-datasets evaluation, unseen-tasks evaluation.
 
-### $\color{#2F6EBA}{A\ Generalist\ Painter}$ 
+### $\text{\color{#2F6EBA}{A\ Projector\ Assisted\ Pretraining\ Method}}$ 
 
-- given an input image, prediction is to inpaint the desired but missing output "image"
-- excellent performance on 7 representative vision tasks with a single generalist model
+- Designed a Task-specific MLP Projector to Enhance Generalization Ability of Supervised Pretraining.
+- Designed Hierarchical Weight Sharing Strategy to Reduce Task Conflicts.
 
-### $\color{#2F6EBA}{In{-}Context\ Visual\ Learning}$  
-- automatically perform vision tasks according to the input task prompts 
-- even the tasks do not exist in the training data
+### $\text{\color{#2F6EBA}{Push\ the\ Limits\ of\  Human-Centric\ Tasks}}$  
+- Higher Performance than States-of-the-art Methods on 17 Datasets and On-par Performance than States-of-the-art Methods on 2 Datasets.
+- Even the Tasks do NOT Exist in the Training Data.
 
 
 ## Installation
-See [installation instructions](docs/INSTALL.md).
+See [installation instructions](asset/INSTALL.md).
 
 ## Data
-See [data instructions](docs/DATA.md). 
+See [data instructions](asset/DATA.md). 
 
 We also provide [a toy training dataset](https://huggingface.co/BAAI/Painter/blob/main/toy_datasets.tar), with 10 samples from each required datasets. You can put it in `$Painter_ROOT/toy_datasets` and set `DATA_PATH=toy_datasets` in `$Painter_ROOT/train_painter_vit_large.sh` for toy experiments.
 
