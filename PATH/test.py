@@ -10,10 +10,7 @@ from core.testers import tester_entry
 import torch
 import yaml
 import re
-try:
-    import spring.linklink as link
-except:
-    import linklink as link
+
 parser = argparse.ArgumentParser(description='Multi-Task Training Framework')
 parser.add_argument('--spec_ginfo_index', type=int, required=True)
 parser.add_argument('--load-path', default='', type=str)
@@ -91,8 +88,6 @@ def main():
         S.initialize(args)
 
         S.run()
-
-    link.finalize()
 
 
 if __name__ == '__main__':
