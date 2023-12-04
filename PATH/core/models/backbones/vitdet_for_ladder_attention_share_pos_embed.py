@@ -239,6 +239,7 @@ class WindowAttention(nn.Module):
             raise
 
         attn = attn.softmax(dim=-1)
+        # for onnx compatibility: No bool tensor allowed
         _inf_tensor = torch.full_like(attn, float('inf'))
         _nan_tensor = torch.full_like(attn, float('nan'))
         _attn_mask = (torch.eq(attn, _inf_tensor).int() + torch.eq(attn, _nan_tensor).int())
