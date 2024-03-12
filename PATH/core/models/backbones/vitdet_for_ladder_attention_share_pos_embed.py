@@ -239,8 +239,11 @@ class WindowAttention(nn.Module):
             raise
 
         attn = attn.softmax(dim=-1)
-        _attn_mask = (torch.isinf(attn) + torch.isnan(attn))
-        attn = attn.masked_fill(_attn_mask, 0)
+        # for onnx compatibility: No bool tensor allowed
+        _inf_tensor = torch.full_like(attn, float('inf'))
+        _nan_tensor = torch.full_like(attn, float('nan'))
+        _attn_mask = (torch.eq(attn, _inf_tensor).int() + torch.eq(attn, _nan_tensor).int())
+        attn = attn.masked_fill(_attn_mask.bool(), 0)
 
         x = (attn @ v).transpose(1, 2).reshape(B_w, N_w, C)
         x = self.proj(x)
@@ -856,7 +859,7 @@ def get_1d_sincos_pos_embed_from_grid(embed_dim, pos):
     out: (M, D)
     """
     assert embed_dim % 2 == 0
-    omega = np.arange(embed_dim // 2, dtype=np.float)
+    omega = np.arange(embed_dim // 2, dtype=np.float32)
     omega /= embed_dim / 2.
     omega = 1. / 10000**omega  # (D/2,)
 
