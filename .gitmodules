@@ -1,3 +1,6 @@
 [submodule "UniHCP"]
 	path = UniHCP
 	url = git@github.com:OpenGVLab/UniHCP.git
+[submodule "Hulk"]
+	path = Hulk
+	url = https://github.com/OpenGVLab/Hulk.git
