@@ -22,7 +22,7 @@ Human-centric perceptions include a variety of vision tasks, which have widespre
 
 [[Paper]](https://arxiv.org/abs/2303.05675)
 
-## Hightlights
+## Highlights
 
 ### $\text{\color{#2F6EBA}{A\ Large-scale\ and\ Diverse\ Human-Centric\ Benchmark}}$ 
 
